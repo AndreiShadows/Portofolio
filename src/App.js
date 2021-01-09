@@ -34,10 +34,10 @@ function App() {
         <div className="col-12 col-md-6 mb-4 mt-4">
           <div className="text-white">
             <h5 className="font-weight-bold mb-3">Documentation</h5>
-            <h6><a href="#" className="text-white">About us</a></h6>
-            <h6><a href="#" className="text-white">How it works?</a></h6>
-            <h6><a href="#" className="text-white">Payments</a></h6>
-            <h6><a href="#" className="text-white">Get Help</a></h6>
+            <h6><a href="https://www.google.com/" className="text-white btn disabled p-0">About us</a></h6>
+            <h6><a href="https://www.google.com/" className="text-white btn disabled p-0">How it works?</a></h6>
+            <h6><a href="https://www.google.com/" className="text-white btn disabled p-0">Payments</a></h6>
+            <h6><a href="https://www.google.com/" className="text-white btn disabled p-0">Get Help</a></h6>
           </div>
         </div>
 
