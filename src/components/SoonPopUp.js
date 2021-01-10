@@ -37,7 +37,7 @@ const SoonPopUp = ({setMessage}) => {
                     <h6 className="font-weight-light text-dark mb-1 header mt-3">Just a test</h6>
                     <h4 className="font-weight-bold text-dark mb-4">Something will change here, just wait and relax...</h4>
                 </div>
-                <div className="ml-auto"><img src="https://img.icons8.com/windows/32/000000/macos-close.png" onClick={() => {
+                <div className="ml-auto"><img src="https://img.icons8.com/windows/32/000000/macos-close.png" alt="close" onClick={() => {
                     setMessage("");
                 }}/></div>
             </motion.div>
