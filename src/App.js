@@ -1,6 +1,6 @@
 import './App.css'
-import {useState} from "react";
-import {AnimatePresence} from "framer-motion";
+import {useState, useEffect} from "react";
+import {motion, AnimatePresence} from "framer-motion";
 //Components
 import SoonPopUp from "./components/SoonPopUp";
 
@@ -8,11 +8,69 @@ import SoonPopUp from "./components/SoonPopUp";
 
 function App() {
   const [message, setMessage] = useState("");
+  const sendButtonVariants = {
+    hidden: {
+      opacity: 0,
+      x: -100,
+      y: 100,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        duration: 0.80,
+        when: "beforeChildren",
+        ease: "easeInOut"
+      }
+    },
+    exit: {
+      x: 100,
+      y: -100,
+      opacity: 0,
+      transition: {
+        duration: 0.80
+      }
+    }
+  }
+  const successButtonVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.80,
+        when: "beforeChildren",
+        ease: "easeInOut"
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.80
+      }
+    }
+  }
+
+  const pathVariants = {
+    hidden: {
+      pathLength: 0,
+    },
+    visible: {
+      pathLength: 1,
+      transition: {
+        duration: 1.5,
+        ease: "easeInOut"
+      }
+    }
+  }
+  const [sentEmail, setSentEmail] = useState(false);
 
   return (
     <>
       <AnimatePresence>({message && (<SoonPopUp setMessage={setMessage}/>)}</AnimatePresence>
-      <div className="container bg-white w-90 rounded-sm shadow-lg mx-auto mt-0 mt-md-5 mb-5 pb-3 px-4 pt-5">
+      <div className="container bg-white w-90 rounded-sm shadow-lg mx-auto mt-0 mt-md-5 mb-5 pb-4 pb-md-5 px-4 pt-5">
         <h5 className="text-center mb-2">Who are we ?</h5>
         <h2 className="mb-4 text-center">The only development agency you will ever need</h2>
         <h5 className="mx-auto w-50 mb-5 font-weigt-light" style={{color: "#162945"}}>We are responsible for everything, from UI/UX Design, Development and Maintenance to event Databases and Back-End Servers. That means you just need to focus on the more important thing.</h5>
@@ -60,7 +118,19 @@ function App() {
           <h4 className="font-weight-bold text-white mb-4">Be informed about every step we make</h4>
           <div className="d-flex align-items-center justify-content-between">
             <input type="text" className="form-control p-2 mb-0 mr-4" name="email" id="email" placeholder="Email" style={{height: "100%"}}/>
-            <button className="btn font-weight-bold p-2 rounded-lg" style={{background: "#EB1510", color: "#ffffff", border: "none"}}>Subscribe</button>
+              <button className="btn d-flex justify-content-center p-2 rounded-lg" style={{background: "#EB1510", color: "#ffffff", border: "none", overflow: "hidden", opacity: 1}} disabled={sentEmail}  onClick={async () => {
+                  setSentEmail(true);
+                  setTimeout(() => {setSentEmail(false)}, 5000)
+                }}>  
+                <AnimatePresence exitBeforeEnter>
+                    {(sentEmail ? 
+                    <motion.svg key="success" variants={successButtonVariants} exit="exit" initial="hidden" animate="visible" x="0px" y="0px" width="30" height="30" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <motion.path variants={pathVariants} d="M1 7.5L9 15.5L17.5 1" stroke="white" strokeWidth="2.5" />
+                    </motion.svg> :
+                    <motion.svg key="send" variants={sendButtonVariants} exit="exit" initial="hidden" animate="visible"  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172"><g fill="none" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" textAnchor="none"><path d="M0,172v-172h172v172z" fill="#eb1510"></path><g fill="#ffffff"><path d="M149.06667,17.2c-0.55025,0.00377 -1.09709,0.08674 -1.6237,0.24635c-0.15501,0.04207 -0.30818,0.09064 -0.45911,0.14557l-126.05495,40.08854v0.02239c-2.23962,0.83573 -3.72568,2.97333 -3.72891,5.3638c0.00425,2.00222 1.05271,3.85719 2.76589,4.89349l38.30807,30.39114l75.73151,-60.35677l-60.35677,75.73151l30.36875,38.28567c1.0349,1.7286 2.90117,2.78714 4.91589,2.78828c2.39047,-0.00322 4.52807,-1.48928 5.3638,-3.72891h0.02239l40.12214,-126.16692c0.041,-0.11449 0.07834,-0.23027 0.11198,-0.34714c0.15961,-0.52661 0.24258,-1.07345 0.24636,-1.6237c0,-3.16643 -2.5669,-5.73333 -5.73333,-5.73333z"></path></g></g></motion.svg>
+                    )}
+                </AnimatePresence>
+              </button>
           </div>
         </div>
       </div>

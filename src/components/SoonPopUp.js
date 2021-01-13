@@ -31,7 +31,9 @@ const SoonPopUp = ({setMessage}) => {
     }
 
     return (
-        <motion.div variants={parentVariant} initial="hidden" animate="visible" exit="hidden" style={{background: "rgba(0,0,0, 0.9)", width: "100%", height: "100%", position: 'fixed', top: 0, left: 0, zIndex: 2}} key="1">
+        <motion.div variants={parentVariant} initial="hidden" animate="visible" exit="hidden" style={{background: "rgba(0,0,0, 0.9)", width: "100%", height: "100%", position: 'fixed', top: 0, left: 0, zIndex: 2}} key="1" onClick={() => {
+            setMessage("");
+        }}>
             <motion.div className="bg-white d-flex align-items-start justify-content-between rounded-lg w-50 mt-5 mx-auto p-4" variants={childrenVariant} key="2">
                 <div className="mr-3">
                     <h6 className="font-weight-light text-dark mb-1 header mt-3">Just a test</h6>
