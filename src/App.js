@@ -72,7 +72,7 @@ function App() {
   const [sentEmail, setSentEmail] = useState(false);
 
   const validator = (data, label) => {
-    if(!data || data.length == 0) return `${label} is required!`
+    if(!data || data.length === 0) return `${label} is required!`
     if(data.length < 8) return `${label} must be at least 8 characters long!`
     if(!data.includes("@")) return `${label} is invalid!`
     return true;
@@ -147,7 +147,7 @@ function App() {
               onClick={async () => {
                 setSentEmail(true);
 
-                if (validator(inputValue, "Email") != true)
+                if (validator(inputValue, "Email") !== true)
                 {
                   setInputError(validator(inputValue, "Email"));
                   inputAnimation.start({
