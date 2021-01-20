@@ -107,7 +107,7 @@ function App() {
         </div>
         <div className="w-100 d-flex align-items-center">
           <button className="btn ml-4 mx-auto text-white font-weight-bold py-2 px-4" style={{background: "#EB1510"}} onClick={() => {
-            setMessage("HEya");
+            setMessage({title: "We are coming soon", body: "Currently our website is in development. If you want to be the first when it's ready, just subscribe to our newsletter!", delay: 0});
           }}>Get started</button>
         </div>
       </div>

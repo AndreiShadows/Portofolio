@@ -41,7 +41,7 @@ const SoonPopUp = ({setMessage, message}) => {
             <motion.div className="bg-white d-flex align-items-start justify-content-between rounded-lg w-50 mt-5 mx-auto p-4" variants={childrenVariant} key="2">
                 <div className="mr-3">
                     <h6 className="font-weight-light text-dark mb-1 header mt-3">{message.title}</h6>
-                    <h4 className="font-weight-bold text-dark mb-4">{message.body}</h4>
+                    <h4 className="font-weight-bold text-dark mb-4 mt-2">{message.body}</h4>
                 </div>
                 <div className="ml-auto"><img src="https://img.icons8.com/windows/32/000000/macos-close.png" alt="close" onClick={() => {
                     setMessage("");
