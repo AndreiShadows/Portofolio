@@ -30,7 +30,7 @@ const SoonPopUp = ({setMessage, message}) => {
         },
         hidden: {
             opacity: 0,
-            y: -200,
+            y: -300,
         }
     }
 

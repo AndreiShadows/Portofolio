@@ -11,9 +11,11 @@ body {
 
 .center {
     margin: 0;
-    top: 50%;
+    position: absolute;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
 
 .header {
